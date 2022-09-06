@@ -9,7 +9,10 @@ const GET_COIN_HISTORY = "GET_COIN_HISTORY"
 const initialState = {
   market: "",
   coin: "",
-  history: "",
+  history: {
+    price: [],
+    timestamp: []
+  },
   news: ""
 }
 
@@ -36,7 +39,7 @@ export default (state=initialState, action) => {
     case GET_COIN_HISTORY: {
       return {
         ...state,
-        history: action.history,
+        history: Object.entries(action.history),
       };
     }
     default:
@@ -59,7 +62,7 @@ export function getCoinInfo(coinId, timePeriod) {
     axios(`/api/v1/${coinId}/${timePeriod}`).then(({ data }) => {
       dispatch({
         type: GET_COIN_INFO,
-        coin: data.coinData.data,
+        coin: data.coinData.data.coin,
       });
     });
   };
@@ -67,9 +70,12 @@ export function getCoinInfo(coinId, timePeriod) {
 export function getCoinHistory(coinId, timePeriod) {
   return (dispatch) => {
     axios(`/api/v1/history/${coinId}/${timePeriod}`).then(({ data }) => {
+      const history = data.coinData.data.history.reduce((acc, rec) => {
+        return { ...acc, [rec.timestamp]: rec.price}
+      }, {})
       dispatch({
         type: GET_COIN_HISTORY,
-        history: data.coinData.data,
+        history
       });
     });
   };

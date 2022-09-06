@@ -3,13 +3,14 @@ import { useSelector, useDispatch} from "react-redux";
 
 import { getMarketData, getCoinInfo, getCoinHistory, getCoinNews } from "../../redux/reducers/reducer";
 import Commondata from "../../components/commondata/commondata";
+import Top100coins from "../../components/top100coins/top100coins";
+import Coinstats from "../../components/coinstats/coinstats";
 import './main.css'
 
 const Main = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getMarketData())
-    // dispatch(getCoinInfo("Qwsogvtv82FCd", "24h"))
     // dispatch(getCoinHistory("Qwsogvtv82FCd", "24h"))
     // dispatch(getCoinNews("Bitcoin"))
   }, [])
@@ -28,7 +29,7 @@ const Main = () => {
         </div>
       </nav>
       <main>
-        <Commondata />
+        <Coinstats />
       </main>
     </div>
   );

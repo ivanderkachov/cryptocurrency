@@ -1,0 +1,114 @@
+.coinstats {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  scroll-behavior: auto;
+}
+.coinstats__header {
+  text-align: center;
+  margin: 10px;
+}
+.coinstats__charts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid blue */
+}
+.coinstats__charts-timeperiod {
+
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  cursor: pointer;
+}
+.coinstats__charts-timeperiod__item:hover, .coinstats__charts-timeperiod__item_active {
+  background-color: rgba(255,255,255, 0.4);
+  border-radius: 10%;
+}
+.coinstats__charts-chart {
+  flex-grow: 1;
+}
+.coinstats__statsfield {
+  flex: 2;
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid white; */
+}
+.coinstats__statsfield-mainstats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  /* border: 1px solid white */
+}
+.coinstats__statsfield-otherstats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  /* border: 1px solid white */
+}
+.coinstats__statsfield h1 {
+  display: flex;
+  justify-content: space-between;
+  height: 20%;
+  width: 70%;
+  padding: 15px;
+  font-weight: 100;
+  font-size: x-large;
+  border-bottom: 1px solid white;
+  background-color: rgba(255,255,255, 0.4);
+}
+.coinstats__statsfield span {
+  font-weight: 500;
+}
+.coinstats__statsfield h1:hover {
+  background-color: rgba(255,255,255, 0.2);
+}
+.coinstats__coininfo {
+  margin: 20px 0;
+  padding: 2px 5px;
+  flex: 1;
+  border: 1px solid white;
+  font-size: larger;
+  background-color: rgba(255,255,255, 0.4);
+}
+.coinstats__coininfo a {
+  color: white;
+}
+.coinstats__coininfo:hover {
+  background-color: rgba(255,255,255, 0.2);
+}
+.coinstats__coinlinks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid yellow */
+}
+.coinstats__coinlinks-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+  width: 40%;
+  padding: 15px;
+  border-bottom: 1px solid white;
+  background-color: rgba(255,255,255, 0.4);
+}
+.coinstats__coinlinks-item:hover {
+  background-color: rgba(255,255,255, 0.2);
+}
+.coinstats__coinlinks-item h1 {
+  font-weight: 100;
+  font-size: x-large;
+}
+.coinstats__coinlinks-item a {
+  color: white;
+  font-size: larger;
+}

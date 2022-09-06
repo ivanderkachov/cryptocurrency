@@ -4,7 +4,6 @@ import millify from "millify";
 import './coincard.css'
 
 const Coincard = ({ coin }) => {
-  console.log(coin)
   return (
     <div className="coinCard">
       <div className="coinCard__header">

@@ -45,7 +45,7 @@ app.get("/api/v1/coins", async (req, res) => {
       "tiers[0]": "1",
       orderBy: "marketCap",
       orderDirection: "desc",
-      limit: "10",
+      limit: "100",
       offset: "0",
     },
     headers: {

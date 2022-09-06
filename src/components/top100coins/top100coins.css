@@ -1,0 +1,38 @@
+.top100coinsBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.top100coinsBoard__input {
+  width: 20%;
+  height: 40px;
+  padding: 5px;
+  color: grey;
+  font-size: large;
+
+}
+.top100coinsBoard__input:focus {
+  outline: none;
+}
+.top100coinsBoard__coinsfield {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  scroll-behavior: auto;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.top100coinscard__container {
+  margin: 5px;
+  padding: 2px;
+  height: 250px;
+  width: 250px;
+}
+.top100coinscard__container:hover {
+  background-color: rgba(255,255,255, 0.2);
+  cursor: pointer;
+}
