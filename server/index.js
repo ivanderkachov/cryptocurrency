@@ -45,7 +45,7 @@ app.get("/api/v1/coins", async (req, res) => {
       "tiers[0]": "1",
       orderBy: "marketCap",
       orderDirection: "desc",
-      limit: "50",
+      limit: "10",
       offset: "0",
     },
     headers: {
@@ -96,7 +96,7 @@ app.get("/api/v1/history/:coinId/:timePeriod", async (req, res) => {
   res.json({ status: "ok", coinData });
 });
 
-app.get("/api/v1/news/:coin", async (req, res) => {
+app.get("/api/v1/:coin", async (req, res) => {
   const { coin } = req.params
   const options = {
     method: "GET",
@@ -106,7 +106,7 @@ app.get("/api/v1/news/:coin", async (req, res) => {
       setLang: "EN",
       freshness: "Day",
       textFormat: "Raw",
-      safeSearch: "Off",
+      safeSearch: "Strict",
     },
     headers: {
       "X-BingApis-SDK": "true",
@@ -114,13 +114,11 @@ app.get("/api/v1/news/:coin", async (req, res) => {
       "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
     },
   };
-
   const cryptoNews = await axios(options).then(({ data }) => {
     return data;
   });
-  res.json({ status: "ok", cryptoNews });
+  res.json({ status: "ok", cryptoNews});
 });
-
 
 
 app.listen(port, () => {
