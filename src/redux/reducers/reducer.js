@@ -1,4 +1,5 @@
 import axios from "axios"
+import dateFormat from "dateformat"
 
 
 const GET_MARKET_DATA = "GET_MARKET_DATA"
@@ -9,10 +10,7 @@ const GET_COIN_HISTORY = "GET_COIN_HISTORY"
 const initialState = {
   market: "",
   coin: "",
-  history: {
-    price: [],
-    timestamp: []
-  },
+  history: "",
   news: ""
 }
 
@@ -39,7 +37,7 @@ export default (state=initialState, action) => {
     case GET_COIN_HISTORY: {
       return {
         ...state,
-        history: Object.entries(action.history),
+        history: action.history,
       };
     }
     default:
@@ -71,7 +69,7 @@ export function getCoinHistory(coinId, timePeriod) {
   return (dispatch) => {
     axios(`/api/v1/history/${coinId}/${timePeriod}`).then(({ data }) => {
       const history = data.coinData.data.history.reduce((acc, rec) => {
-        return { ...acc, [rec.timestamp]: rec.price}
+        return { ...acc, [dateFormat(rec.timestamp*1000, "m/d/yy, h:MM TT")]: rec.price}
       }, {})
       dispatch({
         type: GET_COIN_HISTORY,

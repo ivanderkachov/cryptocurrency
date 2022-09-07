@@ -14,14 +14,15 @@ const Coinstats = () => {
 
   useEffect(() => {
     dispatch(getCoinInfo("Qwsogvtv82FCd", "24h"))
-    dispatch(getCoinHistory("Qwsogvtv82FCd", "24h"));
+    dispatch(getCoinHistory("Qwsogvtv82FCd", "1y"));
   },[])
 
   const coinData = useSelector((store) => store.reducer.coin)
+  const history = useSelector((store) => store.reducer.history)
 
   return (
     <>
-      {coinData !== '' ? (
+      {coinData !== '' || history !== '' ? (
         // <div>{coinData.price}</div>
         <div className="coinstats">
           <div className="coinstats__header">
@@ -44,7 +45,7 @@ const Coinstats = () => {
               })}
             </div>
             <div className="coinstats__charts-chart">
-              <Linechart />
+              <Linechart history={history}/>
             </div>
           </div>
           <div className="coinstats__statsfield">
