@@ -1,0 +1,12 @@
+.news {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  overflow: scroll;
+}
+.news a {
+  text-decoration: none;
+  color: white;
+}

@@ -117,7 +117,18 @@ app.get("/api/v1/:coin", async (req, res) => {
   const cryptoNews = await axios(options).then(({ data }) => {
     return data;
   });
-  res.json({ status: "ok", cryptoNews});
+  const filteredCryptoNews = cryptoNews.value.reduce((acc, rec, index) => {
+    const data = {
+      name: rec.name,
+      url: rec.url,
+      newsImg: rec.image,
+      description: rec.description,
+      company: rec.provider,
+      date: rec.datePublished
+    };
+    return { ...acc, [rec.name]: data }
+  }, {})
+  res.json({ status: "ok", filteredCryptoNews });
 });
 
 

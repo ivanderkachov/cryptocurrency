@@ -83,7 +83,7 @@ export function getCoinNews(coinName) {
     axios(`/api/v1/${coinName}`).then(({ data }) => {
       dispatch({
         type: GET_COIN_NEWS,
-        news: data.cryptoNews,
+        news: data.filteredCryptoNews,
       });
     });
   };

@@ -5,12 +5,13 @@ import { getMarketData, getCoinInfo, getCoinHistory, getCoinNews } from "../../r
 import Commondata from "../../components/commondata/commondata";
 import Top100coins from "../../components/top100coins/top100coins";
 import Coinstats from "../../components/coinstats/coinstats";
+import News from "../../components/news/news";
 import './main.css'
 
 const Main = () => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getMarketData())
+    // dispatch(getMarketData())
     // dispatch(getCoinHistory("Qwsogvtv82FCd", "24h"))
     // dispatch(getCoinNews("Bitcoin"))
   }, [])
@@ -29,7 +30,7 @@ const Main = () => {
         </div>
       </nav>
       <main>
-        <Coinstats />
+        <News />
       </main>
     </div>
   );

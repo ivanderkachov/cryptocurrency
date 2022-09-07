@@ -9,13 +9,17 @@ import './coinstats.css'
 
 const Coinstats = () => {
   const timePeriod = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y']
+  const [period, setPeriod] = useState('24h')
   const dispatch = useDispatch()
   const time = '24hVolume'
 
   useEffect(() => {
     dispatch(getCoinInfo("Qwsogvtv82FCd", "24h"))
-    dispatch(getCoinHistory("Qwsogvtv82FCd", "1y"));
   },[])
+
+  useEffect(() => {
+    dispatch(getCoinHistory("Qwsogvtv82FCd", period))
+  }, [period])
 
   const coinData = useSelector((store) => store.reducer.coin)
   const history = useSelector((store) => store.reducer.history)
@@ -38,7 +42,7 @@ const Coinstats = () => {
             <div className="coinstats__charts-timeperiod">
               {timePeriod.map((tp) => {
                 return (
-                  <div className="coinstats__charts-timeperiod__item" key={tp}>
+                  <div className={period === tp ? "coinstats__charts-timeperiod__item_active" : "coinstats__charts-timeperiod__item"} key={tp} name={tp} onClick={() => {setPeriod(tp)}}>
                     {tp}
                   </div>
                 );
